@@ -31,14 +31,17 @@ const __dirname = path.dirname(__filename);
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
 // Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
 app.use('/api/v1/product', productRoutes);
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
+
 
 // Rest API
 app.get('/', (req, res) => {
